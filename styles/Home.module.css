@@ -1,0 +1,15 @@
+.image {
+  height: 240px;
+}
+
+.card {
+  background-color: red;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 138px;
+}
