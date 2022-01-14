@@ -1,9 +1,9 @@
-import Layout from '../components/Layout'
-import style from '../styles/Home.module.css'
+import Layout from '../../components/Layout'
+import style from '../../styles/Home.module.css'
 import { Card, CardActions, CardContent, CardMedia, Typography, CardActionArea } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import getReservationsReducer from "../redux/reducers/getReservations";
-import { fetchReservations } from "../redux/actions/getReservations";
+import getReservationsReducer from "../../redux/reducers/getReservations";
+import { fetchReservations } from "../../redux/actions/getReservations";
 import { useEffect } from "react";
 
 export default function Home() {
