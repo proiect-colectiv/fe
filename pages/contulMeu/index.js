@@ -1,6 +1,5 @@
 import Layout from '../../components/Layout'
 import style from '../../styles/ContulMeu.module.css'
-// import picture from '/public/3bkf81.png'
 
 export default function contulMeu() {
     return (
