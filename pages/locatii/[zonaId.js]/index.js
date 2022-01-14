@@ -5,7 +5,7 @@ import {useEffect} from "react";
 import getLocationIdReducer from '../../../redux/reducers/getLocationId';
 import { fetchLocationId } from '../../../redux/actions/getLocationId';
 import style from '../../../styles/ZonaId.module.css'
-import { Typography } from '@mui/material';
+import { Button } from '@mui/material';
 
 export default function zonaId() {
 
@@ -54,6 +54,10 @@ export default function zonaId() {
             </div>
             <div className={style.daysContainer}>
               <div>Deschis in zilele: <i className={style.days}>Luni - Duminica</i></div>
+            </div>
+            <div>
+             <br />
+            <Button variant='contained' className='button'>Rezerva locatia</Button>
             </div>
           </div>
       </div>

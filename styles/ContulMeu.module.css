@@ -1,3 +1,33 @@
 .titleHeader {
     color: green;
 }
+
+.image {
+    display: flex;
+    border: 1cm;
+}
+
+.photo{
+    display: flex;
+}
+
+.info{
+    display: flex;
+    justify-content: center;
+    margin-left: 80px;
+    align-self: auto;
+    line-height: 200%;
+    width: auto;
+}
+.login{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.button{
+    width: 120px;
+    height: 50px;
+    margin-left: 25px;
+    margin-top: 10px;
+}

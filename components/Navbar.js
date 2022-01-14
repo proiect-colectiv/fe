@@ -37,9 +37,6 @@ const Navbar = () => {
             <div className={style.listaElem}>
               <GenericLink href='/contact' activeClassName={classes.active}>Contact</GenericLink>
             </div>
-            <div className={style.listaElem}>
-              <GenericLink href='/rezerva' activeClassName={classes.active}>Creaza echipa</GenericLink>
-            </div>
           </div>
         </Toolbar>
       </AppBar>

@@ -31,12 +31,12 @@ export default function Home() {
         return time.split('T')[0]
     }
 
-    return (
+    return ( 
         <Layout>
             <div className={style.cardContent}>
                 {data.map(elem => (
                     <Card key={elem.id}>
-                        <CardActionArea href={`http://localhost:3000/${elem.id}`}>
+                        <CardActionArea href={`http://localhost:3000/rezervari/${elem.id}`}>
                             <img
                                 className={style.image}
                                 src='https://www.worcester.gov.uk/images/easyblog_shared/2019/Football---carousel.jpg'
