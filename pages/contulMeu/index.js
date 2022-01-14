@@ -1,16 +1,16 @@
 import Layout from '../../components/Layout'
 import style from '../../styles/ContulMeu.module.css'
-import picture from '/public/3bkf81.png'
+// import picture from '/public/3bkf81.png'
 
 export default function contulMeu() {
     return (
         <Layout>
-            <div style={{marginBottom:'100px'}}>
+            <div style={{ marginBottom: '100px' }}>
                 <h2 align={"center"}>
                     Informaţii
                 </h2>
             </div>
-            <div style={{marginBottom:'100px'}}>
+            <div style={{ marginBottom: '100px' }}>
                 <table align={"center"}>
                     <tr>
                         <td rowSpan={3}>
@@ -41,7 +41,7 @@ export default function contulMeu() {
                     DESPRE MINE
                 </h3>
             </div>
-            <div style={{marginBottom:'50px'}}>
+            <div style={{ marginBottom: '50px' }}>
                 <p align={"justify"}>
                     Aici începe textul. Apăsați aici și începeți să scrieți. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur magni dolores
                 </p>
