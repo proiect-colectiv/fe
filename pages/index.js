@@ -3,7 +3,9 @@ import style from '../styles/Home.module.css'
 import {Card, CardActions, CardContent, CardMedia, Typography, CardActionArea} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
 import getReservationsReducer from "../redux/reducers/getReservations";
+import getLocationsReducer from "../redux/reducers/getLocations";
 import {fetchReservations} from "../redux/actions/getReservations";
+import {fetchLocations} from "../redux/actions/getLocations";
 import {useEffect, useState} from "react";
 import { Button } from '@mui/material';
 import { Dialog } from '@mui/material';
@@ -16,6 +18,8 @@ import { Select } from '@mui/material';
 import { OutlinedInput } from '@mui/material';
 import { MenuItem } from '@mui/material';
 import { DialogActions,Slider } from '@mui/material';
+import getFilterReducer from '../redux/reducers/sendFilter';
+import { fetchFilter } from '../redux/actions/sendFilter';
 
 export default function Home() {
 
@@ -27,34 +31,43 @@ export default function Home() {
 
     const handleChange = (event) => {
         setJuc(Number(event.target.value) || '');
-      };    
+      };  
+      
+    const handleChangeL = (event) => {
+        setLoc(Number(event.target.value) || '');
+    };    
+    
     
       const handleClose = (event, reason) => {
         if (reason !== 'backdropClick') {
           setOpen(false);
+          console.log(juc);
+          console.log(loc);
         }
       };
       const handleClickOpen = () => {
         setOpen(true);
       };
-
-
-    const [val, setVal] = useState(''); 
-    const updateRange = (e,val) => {
-        setVal(val);
-      };
-    const data = useSelector(state => state.getReservationsReducer.data)
+    
+    const dataF= useSelector(state => state.getFilterReducer.data)
+    const dataL = useSelector(state => state.getLocationsReducer.data)
     const error = useSelector(state => state.getReservationsReducer.error)
 
+    const handleDispatch = () => {
+        dispatch(fetchLocations())
+        dispatch(fetchFilter(juc,loc))
+    }
+    
     useEffect(() => {
         handleDispatch()
     }, [])
 
-    const handleDispatch = () => {
-        dispatch(fetchReservations())
-    }
 
-    console.log(data)
+    const handleFilter = () => {    
+        setOpen(false);
+        setJuc('');
+        handleDispatch();
+    }
 
     const getTime = (time) => {
         return time.split('T')[1]
@@ -73,34 +86,32 @@ export default function Home() {
           <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap' }}>
             <FormControl sx={{ m: 4, minWidth: 150 }}>
             <InputLabel id="demo-dialog-select-label">Numar jucatori</InputLabel>
-            <Slider value={val} onChange={updateRange} marks min={1} max={14} valueLabelDisplay="auto"/>
+            <Slider value={juc} onChange={handleChange} marks min={1} max={14} valueLabelDisplay="auto"/>
             </FormControl>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel id="demo-dialog-select-label">Age</InputLabel>
+              <InputLabel id="demo-dialog-select-label">Locatii</InputLabel>
               <Select
                 labelId="demo-dialog-select-label"
                 id="demo-dialog-select"
-                value={juc}
-                onChange={handleChange}
-                input={<OutlinedInput label="Age" />}
+                value={loc}
+                onChange={handleChangeL}
+                input={<OutlinedInput label="Locatii" />}
               >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value=""><em>None</em></MenuItem>
+            {dataL.map( loc=> (
+                <MenuItem key={loc.id} value={loc.id}>{loc.name}</MenuItem>
+            ))}
               </Select>
             </FormControl>
           </Box>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Ok</Button>
+          <Button onClick={handleClose}>Anulare</Button>
+          <Button onClick={handleFilter}>Filtrare</Button>
         </DialogActions>
       </Dialog>
             <div className={style.cardContent}>
-                {data.map(elem => (
+                {dataF.map(elem => (
                     <Card key={elem.id}>
                         <CardActionArea href={`http://localhost:3000/rezervari/${elem.id}`}>
                             <img
