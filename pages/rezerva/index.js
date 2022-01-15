@@ -1,12 +1,23 @@
 import Layout from '../../components/Layout'
 import style from '../../styles/Rezerva.module.css'
 import Container from "@mui/material/Container";
-import {Button, TextField} from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addReservation } from '../../redux/actions/postReservation';
 
+import { getToken } from '../../redux/actions/postLogin'
+
+import { useRouter } from 'next/router';
+
 export default function rezerva() {
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!getToken()) {
+            router.push('/login');
+        }
+    }, [])
 
     const complexeNoi = [
         {
@@ -62,15 +73,15 @@ export default function rezerva() {
                 <div>
                     <h1 className={style.header}>Creaza o rezervare:</h1>
                     <div className={style.formContainer}>
-                        <TextField className={style.textInput} id="location" label="location" onChange={handleInput}/>
-                        <TextField className={style.textInput} id="name" label="name" onChange={handleInput}/>
+                        <TextField className={style.textInput} id="location" label="location" onChange={handleInput} />
+                        <TextField className={style.textInput} id="name" label="name" onChange={handleInput} />
                         <TextField
-                          className={style.textInput}
-                          id="data"
-                          label="data"
-                          InputLabelProps={{ shrink: true }}
-                          type='date'
-                          onChange={handleInput}
+                            className={style.textInput}
+                            id="data"
+                            label="data"
+                            InputLabelProps={{ shrink: true }}
+                            type='date'
+                            onChange={handleInput}
                         />
                         <Button variant='contained' className={style.buttonRez} onClick={handleSubmit}>Rezerva</Button>
                     </div>

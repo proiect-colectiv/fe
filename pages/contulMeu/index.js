@@ -1,7 +1,19 @@
+import { useEffect } from 'react'
 import Layout from '../../components/Layout'
 import style from '../../styles/ContulMeu.module.css'
+import { getToken } from '../../redux/actions/postLogin'
+
+import { useRouter } from 'next/router';
 
 export default function contulMeu() {
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!getToken()) {
+            router.push('/login');
+        }
+    }, [])
+
     return (
         <Layout>
             <div style={{ marginBottom: '100px' }}>
