@@ -16,3 +16,8 @@
 .listaElem {
     padding: 25px 20px;
 }
+
+.photo {
+    height: 40px;
+    width: 100px;
+  }

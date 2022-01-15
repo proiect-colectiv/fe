@@ -26,9 +26,6 @@ export default function zonaId() {
     dispatch(fetchLocationId(zonaId))
   }
 
-  console.log('id: '+ zonaId)
-  console.log("data: " + data)
-  console.log('name: ' + data.name)
 
   return (
     <Layout>
@@ -57,7 +54,7 @@ export default function zonaId() {
             </div>
             <div>
              <br />
-            <Button variant='contained' className='button'>Rezerva locatia</Button>
+            <Button variant='contained' className='button' href={`http://localhost:3000/locatii/rezervare/${zonaId}`}>Rezerva locatia</Button>
             </div>
           </div>
       </div>

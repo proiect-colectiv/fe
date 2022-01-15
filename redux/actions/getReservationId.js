@@ -1,6 +1,7 @@
 export const FETCH_RESERVATION_ID = 'FETCH_RESERVATION_ID';
 export const ERROR = 'ERROR';
 
+
 export const fetchReservationId = (id) => {
     return (dispatch) => {
         return fetch('http://localhost:8080/proiectcolectiv/reservations/' + id)

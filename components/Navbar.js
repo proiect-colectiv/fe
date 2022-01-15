@@ -22,8 +22,10 @@ const Navbar = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
+        <div className={style.lista}>
+        <img src="https://i.ibb.co/2sYCzw1/unknown.png" alt="unknown" border="0" className={style.photo}/></div>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            ProiectColectiv
+            SportConnect
           </Typography>
           <div className={style.lista}>
             <div className={style.listaElem}>
