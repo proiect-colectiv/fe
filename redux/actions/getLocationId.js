@@ -8,6 +8,6 @@ export const fetchLocationId = (id) => {
       .then(json => dispatch(
         { type: FETCH_LOCATION_ID, data: json }))
       .catch(err => dispatch(
-        { type: ERROR,error: 'Unable to fetch data' }))
+        { type: ERROR, error: 'Unable to fetch data' }))
   }
 }

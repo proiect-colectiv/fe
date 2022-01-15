@@ -10,22 +10,35 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
-import Link from 'next/link'
-import { useRouter } from 'next/router'
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+import { useDispatch, useSelector } from "react-redux";
+
+import { login as loginApi } from "../../redux/actions/postLogin";
 
 const theme = createTheme();
 
 const login = () => {
     const router = useRouter();
 
-    const handleSubmit = (event) => {
+    const dispatch = useDispatch();
+
+    const token = useSelector(state => state.postLoginReducer.token);
+
+    const handleLogin = (username, password) => {
+        dispatch(loginApi(username, password));
+    }
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        // eslint-disable-next-line no-console
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+
+        const username = data.get('username');
+        const password = data.get('password');
+
+        handleLogin(username, password);
+
         router.push('/home');
     };
 
@@ -49,10 +62,10 @@ const login = () => {
                     margin="normal"
                     required
                     fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
+                    id="username"
+                    label="Username"
+                    name="username"
+                    autoComplete="username"
                     autoFocus
                 />
                 <TextField

@@ -27,7 +27,7 @@ const Navbar = () => {
           </Typography>
           <div className={style.lista}>
             <div className={style.listaElem}>
-              <GenericLink href='/' activeClassName={classes.active}>Rezervari</GenericLink>
+              <GenericLink href='/home' activeClassName={classes.active}>Rezervari</GenericLink>
             </div>
             <div className={style.listaElem}>
               <GenericLink href='/locatii' activeClassName={classes.active}>Locatii</GenericLink></div>
