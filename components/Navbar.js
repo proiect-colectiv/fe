@@ -8,6 +8,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Link from 'next/link'
 import GenericLink from '../common/GenericLink';
 
+import { logout } from '../redux/actions/postLogin'
+
 const useStyles = makeStyles({
   active: {
     color: 'blue'
@@ -22,14 +24,14 @@ const Navbar = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-        <div className={style.lista}>
-        <img src="https://i.ibb.co/2sYCzw1/unknown.png" alt="unknown" border="0" className={style.photo}/></div>
+          <div className={style.lista}>
+            <img src="https://i.ibb.co/2sYCzw1/unknown.png" alt="unknown" border="0" className={style.photo} /></div>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             SportConnect
           </Typography>
           <div className={style.lista}>
             <div className={style.listaElem}>
-              <GenericLink href='/' activeClassName={classes.active}>Rezervari</GenericLink>
+              <GenericLink href='/home' activeClassName={classes.active}>Rezervari</GenericLink>
             </div>
             <div className={style.listaElem}>
               <GenericLink href='/locatii' activeClassName={classes.active}>Locatii</GenericLink></div>
@@ -38,6 +40,9 @@ const Navbar = () => {
             </div>
             <div className={style.listaElem}>
               <GenericLink href='/contact' activeClassName={classes.active}>Contact</GenericLink>
+            </div>
+            <div className={style.listaElem}>
+              <GenericLink href='/login' activeClassName={classes.active} onClick={logout}>Logout</GenericLink>
             </div>
           </div>
         </Toolbar>

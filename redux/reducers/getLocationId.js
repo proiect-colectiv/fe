@@ -1,8 +1,8 @@
-import {ERROR, FETCH_LOCATION_ID} from "../actions/getLocationId";
+import { ERROR, FETCH_LOCATION_ID } from "../actions/getLocationId";
 
 const initialState = {
   error: '',
-  data: { }
+  data: {}
 }
 
 const getLocationIdReducer = (state = initialState, action) => {
@@ -12,7 +12,7 @@ const getLocationIdReducer = (state = initialState, action) => {
     case ERROR:
       return { ...state, error: action.error }
     default:
-      return {...state}
+      return { ...state }
   }
 }
 

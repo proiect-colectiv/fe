@@ -1,11 +1,22 @@
 import Layout from '../../components/Layout'
 import style from '../../styles/Home.module.css'
-import {Card, CardActions, CardContent, CardMedia, Typography, CardActionArea} from "@mui/material";
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
-import {fetchLocations} from "../../redux/actions/getLocations";
+import { Card, CardActions, CardContent, CardMedia, Typography, CardActionArea } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchLocations } from "../../redux/actions/getLocations";
+
+import { getToken } from '../../redux/actions/postLogin'
+
+import { useRouter } from 'next/router';
 
 export default function Home() {
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!getToken()) {
+            router.push('/login');
+        }
+    }, [])
 
     const dispatch = useDispatch();
 

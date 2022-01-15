@@ -1,15 +1,23 @@
 import Layout from '../../../components/Layout'
-import {useRouter} from 'next/router';
-import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import getLocationIdReducer from '../../../redux/reducers/getLocationId';
 import { fetchLocationId } from '../../../redux/actions/getLocationId';
 import style from '../../../styles/ZonaId.module.css'
 import { Button } from '@mui/material';
 
-export default function zonaId() {
+import { getToken } from '../../../redux/actions/postLogin';
 
+export default function zonaId() {
   const router = useRouter();
+
+  useEffect(() => {
+    if (!getToken()) {
+      router.push('/login');
+    }
+  }, [])
+
   const pathNames = router.asPath.split('/')
   pathNames.shift()
   const zonaId = pathNames[1]
@@ -26,17 +34,17 @@ export default function zonaId() {
     dispatch(fetchLocationId(zonaId))
   }
 
-
   return (
     <Layout>
       <div className={style.content}>
-          <div className={style.imageContainer}>
-            <img
-              className={style.image}
-              src='https://biotechnodata.com/wp-content/uploads/2021/07/4.jpg'
-              alt="green iguana"
-            />
-          </div>
+        <div className={style.imageContainer}>
+          <img
+            className={style.image}
+            src='https://biotechnodata.com/wp-content/uploads/2021/07/4.jpg'
+            alt="green iguana"
+          />
+        </div>
+        <div className={style.textContainer}>
           <div className={style.textContainer}>
             <h1>{data.name}</h1>
             <div className={style.detailsContainer}>
@@ -53,10 +61,11 @@ export default function zonaId() {
               <div>Deschis in zilele: <i className={style.days}>Luni - Duminica</i></div>
             </div>
             <div>
-             <br />
-            <Button variant='contained' className='button' href={`http://localhost:3000/locatii/rezervare/${zonaId}`}>Rezerva locatia</Button>
+              <br />
+              <Button variant='contained' className='button' href={`http://localhost:3000/locatii/rezervare/${zonaId}`}>Rezerva locatia</Button>
             </div>
           </div>
+        </div>
       </div>
     </Layout>
   )

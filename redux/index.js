@@ -1,4 +1,4 @@
-import {createStore, combineReducers, applyMiddleware} from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import getReservationsReducer from "./reducers/getReservations";
 import getLocationsReducer from "./reducers/getLocations";
@@ -7,6 +7,7 @@ import postReservation from './reducers/postReservation';
 import getReservationIdReducer from './reducers/getReservationId';
 import getUsersReservationsIdReducer from './reducers/getUsersForReservationId';
 import getFilterReducer from "./reducers/sendFilter";
+import postLoginReducer from "./reducers/postLogin";
 
 const rootReducer = combineReducers({
     getReservationsReducer,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
     postReservation,
     getReservationIdReducer,
     getUsersReservationsIdReducer,
-    getFilterReducer
+    getFilterReducer,
+    postLoginReducer
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
