@@ -8,8 +8,13 @@ if (localStorageToken) {
     axios.defaults.headers['Authorization'] = localStorageToken;
 }
 
+export const getToken = () => {
+    return axios.defaults.headers['Authorization'];
+}
+
 export const logout = () => {
     delete axios.defaults.headers['Authorization'];
+    localStorage.removeItem('token');
 }
 
 export const login = (username, password) => async (dispatch) => {

@@ -8,6 +8,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Link from 'next/link'
 import GenericLink from '../common/GenericLink';
 
+import { logout } from '../redux/actions/postLogin'
+
 const useStyles = makeStyles({
   active: {
     color: 'blue'
@@ -39,6 +41,9 @@ const Navbar = () => {
             </div>
             <div className={style.listaElem}>
               <GenericLink href='/rezerva' activeClassName={classes.active}>Creaza echipa</GenericLink>
+            </div>
+            <div className={style.listaElem}>
+              <GenericLink href='/login' activeClassName={classes.active} onClick={logout}>Logout</GenericLink>
             </div>
           </div>
         </Toolbar>
