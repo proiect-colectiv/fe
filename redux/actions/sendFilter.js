@@ -1,6 +1,5 @@
 export const FETCH_FILTER = 'FETCH_FILTER';
 export const ERROR = 'ERROR';
-
 export const fetchFilter = (juc,loc) => {
      return (dispatch) => {
         return fetch( 'http://localhost:8080/proiectcolectiv/reservations', {
@@ -8,10 +7,11 @@ export const fetchFilter = (juc,loc) => {
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
-                'Accept': '*/*'},
+                'Accept': '*/*',
+                },
             body: JSON.stringify({
                 playerNumber: juc,
-                locationId: loc
+                locationId: loc,
             })
         })
             .then( response => response.json()) 

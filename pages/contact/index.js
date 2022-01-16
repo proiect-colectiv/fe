@@ -17,7 +17,7 @@ export default function contact() {
     return (
         <Layout>
             <h3>Contact Form</h3>
-            <label>Mesaj de primire</label>
+            <label className={style.label}>Multumim ca folosesti aplicatia noastra. Daca ai intampinat o problema sau doresti sa ne lasi un Feedback despre cum a fost experienta ta sau doresti sa vii cu propria ta idee, completeaza formularul si noi vom reveni cu un raspuns cat de curand.</label>
 
     <div className={style.container}>
         <form>

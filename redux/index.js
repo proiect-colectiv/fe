@@ -8,6 +8,7 @@ import getReservationIdReducer from './reducers/getReservationId';
 import getUsersReservationsIdReducer from './reducers/getUsersForReservationId';
 import getFilterReducer from "./reducers/sendFilter";
 import postLoginReducer from "./reducers/postLogin";
+import getUsersReducer from "./reducers/getUser";
 
 const rootReducer = combineReducers({
     getReservationsReducer,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     getReservationIdReducer,
     getUsersReservationsIdReducer,
     getFilterReducer,
-    postLoginReducer
+    postLoginReducer,
+    getUsersReducer,
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunk))

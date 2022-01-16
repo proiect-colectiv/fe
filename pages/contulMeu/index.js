@@ -1,62 +1,47 @@
-import { Button, TextField } from "@mui/material";
-import { useEffect } from 'react'
-import Layout from '../../components/Layout'
-import style from '../../styles/ContulMeu.module.css'
-import { getToken } from '../../redux/actions/postLogin'
-
-import { useRouter } from 'next/router';
-
+import Layout from '../../components/Layout';
+import style from '../../styles/ContulMeu.module.css';
+import {Button, TextField} from "@mui/material";
+import { fetchUsers } from '../../redux/actions/getUser';
+import getUsersReducer from '../../redux/reducers/getUser';
+import {useDispatch} from "react-redux";
+import {useSelector} from "react-redux";
+import { useEffect } from "react";
 export default function contulMeu() {
-    const router = useRouter();
 
-    useEffect(() => {
-        if (!getToken()) {
-            router.push('/login');
-        }
-    }, [])
+const dispatch = useDispatch();
+  
+  useEffect(() => {
+    handleFetch()
+  })
+
+  const user =useSelector( state => state.getUsersReducer.data)
+  const handleFetch = () => {
+    dispatch(fetchUsers())
+  };
 
     return (
         <Layout>
-            <div style={{ marginBottom: '100px' }}>
+            <div style={{marginBottom:'40px'}}>
                 <h2 align={"center"}>
-                    Contul meu
+                   Contul meu
                 </h2>
             </div>
-            <div style={{ marginBottom: '100px' }}>
-                <table align={"center"}>
-                    <tr>
-                        <td rowSpan={3}>
-                            <img
-                                className={style.image}
-                                src='https://i.ibb.co/b2Yw368/3bkf81.png'
-                                alt="profile picture"
-                            />
-                        </td>
-                        <td>
-                            Nume, prenume
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Manager / Firma
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            moto-ul meu
-                        </td>
-                    </tr>
-                </table>
+            <div className={style.login}>
             </div>
-            <div>
-                <h3 align={"center"}>
-                    DESPRE MINE
-                </h3>
-            </div>
-            <div style={{ marginBottom: '50px' }}>
-                <p align={"justify"}>
-                    Aici începe textul. Apăsați aici și începeți să scrieți. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur magni dolores
-                </p>
+            <div className={style.photo}>
+                <img className={style.image}
+                    src='https://i.ibb.co/b2Yw368/3bkf81.png'
+                    alt="profile picture"
+                />
+                <div className={style.info}>
+                    <p>Nume:      {user.lastName}<br />
+                       Prenume:   {user.firstName}<br />
+                       Username:  {user.username}<br />
+                       Email:     {user.email}<br />
+                       Sporturi practicate: Football <br />
+                    </p>
+                    
+                </div>
             </div>
         </Layout>
     )

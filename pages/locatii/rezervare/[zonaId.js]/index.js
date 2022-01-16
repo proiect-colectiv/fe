@@ -59,7 +59,8 @@ export default function rezervareZonaId() {
   const [value, setValue] = useState(now);
 
 
-
+  const month= Number(value.$M)+1
+  const dataValue= value.$y+'-'+month+'-'+value.$D;
 
   return (
     <Layout>
